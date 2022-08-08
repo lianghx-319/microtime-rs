@@ -1,9 +1,15 @@
 #![deny(clippy::all)]
 
-#[macro_use]
-extern crate napi_derive;
+use std::time::SystemTime;
+use napi_derive::napi;
 
 #[napi]
-fn sum(a: i32, b: i32) -> i32 {
-  a + b
+pub fn now() -> i64 {
+  match SystemTime::now().duration_since(SystemTime::UNIX_EPOCH) {
+    Ok(n) => match i64::try_from(n.as_micros()) {
+      Ok(n) => n,
+      Err(_) => panic!("[microtime.now] u128 microsecond cannot convert to i64")
+    },
+    Err(_) => panic!("[microtime.now] SystemTime before UNIX EPOCH!"),
+  }
 }
