@@ -1,6 +1,6 @@
 {
   "name": "@microtime-rs/node",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Get the current time in microseconds(Rust version)",
   "keywords": [
     "napi-rs",
