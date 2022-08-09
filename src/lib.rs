@@ -1,7 +1,7 @@
 #![deny(clippy::all)]
 
-use std::time::SystemTime;
 use napi_derive::napi;
+use std::time::SystemTime;
 
 #[napi]
 pub fn now() -> i64 {
